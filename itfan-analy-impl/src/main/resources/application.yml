@@ -1,0 +1,44 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: itfan-analy-provider
+  zipkin:
+    base-url: http://localhost:8901
+  datasource:
+     url : jdbc:mysql://localhost:3306/itfan_video?useUnicode=true&characterEncoding=utf-8
+     username : root
+     password : 123
+     driverClassName : org.mariadb.jdbc.Driver
+     max-active : 20
+     max-idle : 8
+     min-idle : 8
+     initial-size : 10
+     hikari:
+        max-lifetime: 1765000
+        maximum-pool-size: 10
+  redis:
+      database : 0
+      host : www.itfan.top
+      port : 6379
+      password : Hjx969190
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+      timeout: 0
+mybatis:
+  type-aliases-package: com.itfan.user.domain
+  configuration:
+    map-underscore-to-camel-case: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://ralap:hjx969190@www.itfan01.top:8761/eureka/,http://ralap:hjx969190@www.itfan02.top:8762/eureka/
+management:
+  security:
+    enabled: false
+logging:
+  level:
+    org.springframework.web: debug
